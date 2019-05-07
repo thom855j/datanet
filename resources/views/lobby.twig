@@ -1,0 +1,93 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+    <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
+    <p data-ty="input">Trying...</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Connected to DATANET</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Copyright (c) 1984-1989 Datalære.</p>
+    <p data-ty="input">RC759 CP/M 86 - UNIX Inspired System.</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Welcome to Datanet!</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Type HELP for detailed command list.</p>
+    <p data-ty="input">Type NEWUSER to create an account.</p>
+    </div>
+
+    <br>
+
+    <div id="cmd">
+      <span></span>
+      <div id="cursor"></div>
+    </div>
+
+    <form>
+    <input type="text" name="cmd" id="input" />
+    </form>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+    $("#input").inputhistory();
+
+            //If user submits the form
+    $("form").submit(function(e){
+
+        e.preventDefault();
+
+        var client = $("#input").val();
+
+        var cmd = client.split(" ");
+
+        console.log(cmd);
+        throw new Error("Something went badly wrong!");
+        var oldscrollHeight = $("#terminal").prop("scrollHeight") - 20; //Scroll height before the 
+
+        $.ajax({
+            type: "POST",
+            url: "{{ base_url() }}/auth/register",
+            cache: false,
+            data: {input: client},
+            success: function(data){      
+
+                if(data == 'ok') {
+
+                    console.log(data);
+
+                } else if (data == 'error') {
+
+                    window.location = 'index.php?id=login';
+
+                } else {
+
+                    $("#terminal").append(data); //Insert chat log into the #terminal div  
+
+                        //Auto-scroll           
+                    var newscrollHeight = $("#terminal").prop("scrollHeight") - 20; //Scroll height after the request
+                    if(newscrollHeight > oldscrollHeight){
+                        $("#terminal").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
+                    } 
+                }   
+                              
+            },
+        });
+
+         $("#input").prop("value", "");
+
+        return false;
+
+    });
+
+    }); 
+    </script>
+{% endblock %}

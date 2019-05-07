@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>DATANET</title>
+        <link rel="stylesheet" type="text/css" href="{{ url }}public/css/style.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <body>
+
+    <div class="container">
+        {% include 'templates/partials/flash.twig' %}
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script src="{{ url }}public/js/inputhistory.min.js"></script>
+    <script src="{{ url }}public/js/app.js"></script>
+    <script src="{{ url }}public/js/termynal.min.js" data-termynal-container="#terminal"></script>
+    </body>
+</html>
+
+

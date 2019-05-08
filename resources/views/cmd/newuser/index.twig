@@ -3,26 +3,13 @@
 {% block content %}
 
     <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
-    <p data-ty="input">Trying...</p>
+    <p data-ty="input">username?</p>
 
     <br data-ty>
 
-    <p data-ty="input">Connected to DATANET</p>
-
-    <br data-ty>
-
-    <p data-ty="input">Copyright (c) 1984-1989 Datalære.</p>
-    <p data-ty="input">RC759 CP/M 86 - UNIX Inspired System.</p>
-
-    <br data-ty>
-
-    <p data-ty="input">Welcome to Datanet!</p>
-
-    <br data-ty>
-
-    <p data-ty="input">Type HELP for detailed command list.</p>
-    <p data-ty="input">Type NEWUSER < username|password > to create an account.</p>
     </div>
+
+    <br>
 
     <div id="cmd">
       <span></span>
@@ -30,13 +17,11 @@
     </div>
 
     <form>
-    <span>.<input type="text" name="cmd" id="input" /></span>
+    <input type="text" name="cmd" id="input" />
     </form>
 
     <script type="text/javascript">
     $(document).ready(function(){
-
-    $('input').focus();
 
     $("#input").inputhistory();
 
@@ -50,19 +35,27 @@
         var input = client.split(" ");
 
         var cmd = input[0].toLowerCase();
+
+        var url = window.location.href.substr( window.location.href.lastIndexOf('/') + 1);
+
+         console.log(url);
      
         var oldscrollHeight = $("#terminal").prop("scrollHeight") - 20; //Scroll height before the 
 
         $.ajax({
             type: "POST",
-            url: "{{ base_url() }}/cmd/" + cmd,
+            url: "{{ base_url() }}/cmd/" + url,
             cache: false,
-            data: {input: client, username: input[1], password: input[2]},
+            data: {input: client},
             success: function(data){      
 
                 if(data == 200) {
 
-                    //window.location = "{{ base_url() }}/cmd/" + cmd;
+                    console.log(data);
+
+                } else if(data == 'Password:') {
+
+                    $("#input").type = 'password';
 
                 } else {
 
@@ -77,7 +70,7 @@
                               
             },
             error: function(xhr, status, error) {
-                var errorMessage = "% Unrecognized command - type HELP for a list";
+                var errorMessage = "% unrecognized command - type HELP for a list";
                 $("#terminal").append(errorMessage, "<br>");
 
                 var newscrollHeight = $("#terminal").prop("scrollHeight") - 20; //Scroll height after the request

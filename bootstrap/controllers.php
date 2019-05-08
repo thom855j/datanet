@@ -9,3 +9,7 @@ $container['HomeController'] = function ($c) {
 $container['AuthController'] = function ($c) {
     return new App\Http\Controllers\Auth\AuthController($c);
 };
+
+$container['CmdController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\CmdController($c);
+};

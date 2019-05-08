@@ -10,11 +10,11 @@ namespace App\Validation\Exceptions;
 
 use Respect\Validation\Exceptions\ValidationException;
 
-class EmailExistsException extends ValidationException {
+class UsernameExistsException extends ValidationException {
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'Email is already taken.',
+            self::STANDARD => 'Username is already taken.',
         ]
     ];
 

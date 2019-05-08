@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model {
 
     const CREATED_AT = 'user_registered';
-    const UPDATED_AT = false;
+    const UPDATED_AT = null;
 
     protected $table = 'users';
     protected $fillable = [
@@ -24,12 +24,9 @@ class User extends Model {
 
     public function setPassword($password) {
         return $this->update([
-                    'user_pass' => password_hash($password, PASSWORD_DEFAULT),
+            'user_pass' => base64_encode($password),
         ]);
     }
 
-    public function getUpdatedAtColumn() {
-        return null;
-    }
 
 }

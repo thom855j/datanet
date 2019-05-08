@@ -54,11 +54,23 @@ textarea:focus, input:focus{
   margin: 0 auto;
 }
 
+#terminal {
+    text-align:left;
+    border: 1px solid #441B02;
+    overflow:auto;
+    height: 325px;
+}
+
+#input {
+  border: none;
+}
 
 
 /*
 * Commandline input
 */
+
+/*
 #cmd {
   padding: 10px;
   overflow: hidden;
@@ -81,12 +93,11 @@ input {
   height: 0;
   opacity: 0;
 }
-
+*/
 
 /*
  *  Scrollbar style
  */
-
 #terminal::-webkit-scrollbar-track, #terminal::-webkit-scrollbar-corner
 {
    

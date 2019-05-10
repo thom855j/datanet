@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 
-namespace App\Auth;
+namespace App\Helpers;
 
-use App\Models\User;
+use App\Models\Users\User;
 
 class Auth {
 

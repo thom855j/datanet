@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Cmd\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Users\User;
 use Respect\Validation\Validator as v;
 
 class NewUserController extends Controller {
@@ -66,6 +66,8 @@ class NewUserController extends Controller {
 
             $user = User::create([
                 'user_login' => $req->getParam('username'),
+                'user_status' => 1,
+                'user_ip' => getIP()
             ]);
 
             $user->setPassword($req->getParam('password'));
@@ -112,6 +114,8 @@ class NewUserController extends Controller {
             $user = User::create([
                 'user_login' => $req->getParam('username'),
                 'user_email' => $req->getParam('email'),
+                'user_status' => 1,
+                'user_ip' => getIP()
             ]);
 
             $user->setPassword($req->getParam('password'));

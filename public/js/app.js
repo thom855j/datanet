@@ -21,11 +21,11 @@ $(document).ready(function(){
 
             var post_data = data;
 
-            var url = input.split(" ")[0];
+            var cmd_url = input.split(" ")[0];
 
             $.ajax({
                 type: "POST",
-                url: getUrl() + "/cmd/" + url,
+                url: getUrl() + "cmd/" + cmd_url,
                 cache: false,
                 data: post_data,
                 success: function(data){  

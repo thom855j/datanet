@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Cmd\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Users\User;
 use Respect\Validation\Validator as v;
 
 class LoginController extends Controller {
@@ -35,10 +35,17 @@ class LoginController extends Controller {
             return false;
         }
 
-        if($this->auth->attempt($req->getParam('username'), $req->getParam('password'))) {
-              return $this->redirectUrl($req->getParam('username'));
+        $user = $this->auth->attempt($req->getParam('username'), $req->getParam('password'));
+
+        if($user && $user->user_status == 1) {
+
+            $this->auth->update(['user_ip' =>getIP()]);
+            return $this->redirectUrl($req->getParam('username'));
+
         } else {
-            echo json_encode(['error'=> 'Identification not recognized by system. Please try again.']);
+            echo json_encode(
+                ['error'=> 'Identification not recognized by system or user banned. Please try again.']
+            );
             return false;
         }
 

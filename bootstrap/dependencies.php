@@ -15,7 +15,7 @@ $container['notFoundHandler'] = function ($c) {
 
 // Auth
 $container['auth'] = function ($c) {
-    return new App\Auth\Auth;
+    return new App\Helpers\Auth;
 };
 
 // Twig view renderer

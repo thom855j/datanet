@@ -1,34 +1,3 @@
-/*
-$(function() {
-
-var cursor;
-
-$('#cmd').click(function() {
-   $('input').focus();
-  
-  cursor = window.setInterval(function() {
-  if ($('#cursor').css('visibility') === 'visible') {
-    $('#cursor').css({ visibility: 'hidden' });
-  } else {
-    $('#cursor').css({ visibility: 'visible' });  
-  }  
-  }, 500);
-  
-});
-
-$('input').keyup(function() {
-  $('#cmd span').text($(this).val());
-  
-});
-  
-  $('input').blur(function() {
-     clearInterval(cursor);
-     $('#cursor').css({ visibility: 'visible' });    
-  });
-
-
-});
-*/
 
 var terminalID = "terminal";
 
@@ -48,7 +17,7 @@ function cmd(input) {
 
     return true;
 
-  } else if(eval("typeof " + client) === "function" && eval(client).length == 0) {
+  } else if(typeof window[client] !== "undefined" && eval(client).length == 0) {
 
     return eval(client + "();");
 
@@ -65,7 +34,22 @@ function clear() {
 }
 
 function logout() {
-  document.getElementById(terminalID).innerHTML = "";
+
+  $.post(getUrl() + "cmd/logout", " ", function(data, status){
+
+      var response = $.parseJSON(data);  
+
+      if (response.redirect !== undefined && response.redirect) {
+
+        return window.location.href = response.redirect_url;
+
+      } else {
+
+        $("#terminal").append(response.error, "<br>"); //Insert chat log into the #terminal div  
+      }   
+      
+    });
+
   return false;
 }
 

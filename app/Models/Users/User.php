@@ -6,23 +6,27 @@
  * and open the template in the editor.
  */
 
-namespace App\Models;
+namespace App\Models\Users;
 
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model {
 
     const CREATED_AT = 'user_registered';
-    const UPDATED_AT = null;
+    const UPDATED_AT = 'user_last';
 
     protected $table = 'users';
 
     protected $primaryKey = 'ID';
 
     protected $fillable = [
-        'user_email',
         'user_login',
         'user_pass',
+        'user_email',
+        'user_ip',
+        'user_activation_key',
+        'user_status',
+        'display_name'
     ];
 
     public function setPassword($password) {

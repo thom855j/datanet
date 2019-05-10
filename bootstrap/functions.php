@@ -1,5 +1,9 @@
 <?php
 
+function randomIP() {
+    return long2ip(mt_rand());
+}
+
 function filterInput($input, $lowercase = false) {
 
     if($lowercase) {

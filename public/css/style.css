@@ -7,9 +7,9 @@
 * Setup
 */
 body, input, a {
-  background: #441B02;
-  color:  #DEA02C;
-  text-shadow: #DEA02C 0 -1px 35px;
+  background: #000000;
+  color:  #00FF00;
+  text-shadow: #00FF00 0 -1px 35px;
   font-family: 'VT323', Arial, Helvetica, sans-serif;;
   font-size: 24px;
   -webkit-font-smoothing: none;
@@ -30,6 +30,13 @@ form input[type="text"] {
     text-transform: lowercase;
 }
 */ 
+
+input[type="text"] {
+     width: 90%; 
+     box-sizing: border-box;
+     -webkit-box-sizing:border-box;
+     -moz-box-sizing: border-box;
+}
   
 a {
     text-decoration:none; 
@@ -48,7 +55,6 @@ textarea:focus, input:focus{
 * Custom
 */
 .container {
-  padding: 25px;
   width: 100%;
   border: none; 
   margin: 0 auto;
@@ -56,9 +62,8 @@ textarea:focus, input:focus{
 
 #terminal {
     text-align:left;
-    border: 1px solid #441B02;
-    overflow:auto;
-    height: 325px;
+    border: none;
+    height: 100%;
 }
 
 #input {
@@ -98,13 +103,12 @@ input {
 /*
  *  Scrollbar style
  */
-#terminal::-webkit-scrollbar-track, #terminal::-webkit-scrollbar-corner
+body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner
 {
-   
-    background-color: #441B02;
+    background-color: #000000;
 }
 
-#terminal::-webkit-scrollbar
+body::-webkit-scrollbar
 {
-    background-color: #441B02;
+    background-color: #000000;
 }

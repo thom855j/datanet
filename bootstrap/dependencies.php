@@ -1,8 +1,17 @@
 <?php
 
 // DIC configuration
-
 $container = $app->getContainer();
+
+// Custom 404
+$container['notFoundHandler'] = function ($c) {
+    return function ($request, $response) use ($c) {
+        return $response
+            ->withStatus(308)
+            ->withRedirect($c->router->pathFor('system.lobby'));
+    };
+};
+
 
 // Auth
 $container['auth'] = function ($c) {
@@ -11,6 +20,7 @@ $container['auth'] = function ($c) {
 
 // Twig view renderer
 $container['view'] = function ($c) {
+
     $settings = $c->get('settings')['renderer'];
     $view = new Slim\Views\Twig($settings['template_path'], [
         'cache' => $settings['cache_path'],

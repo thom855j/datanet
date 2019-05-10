@@ -14,7 +14,7 @@ class AuthMiddleware extends Middleware {
 
         if (!$this->auth->check()) {
             $this->flash->addMessage('error', 'Please sign in!');
-            return $res->withRedirect($this->router->pathFor('auth.login'));
+            return $res->withRedirect($this->router->pathFor('system.lobby'));
         }
 
         return $next($req, $res);

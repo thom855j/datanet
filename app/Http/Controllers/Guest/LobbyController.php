@@ -6,14 +6,14 @@
  * and open the template in the editor.
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller {
+class LobbyController extends Controller {
 
     public function index($req, $res, $args) {
-        return $this->view->render($res, 'lobby.twig');
+        return $this->view->render($res, 'guest/lobby.twig');
     }
 
 }

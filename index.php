@@ -79,6 +79,9 @@ define('DB_PREFIX', env('DB_PREFIX') ?: '');
 $settings = require APP_SRC . 'settings.php';
 $app = new \Slim\App($settings);
 
+// Set up custom functions
+require APP_SRC . 'functions.php';
+
 // Set up dependencies
 require APP_SRC . 'dependencies.php';
 

@@ -2,14 +2,26 @@
 
 // Controller configuration
 
-$container['HomeController'] = function ($c) {
-    return new App\Http\Controllers\HomeController($c);
+$container['LobbyController'] = function ($c) {
+    return new App\Http\Controllers\Guest\LobbyController($c);
 };
 
-$container['AuthController'] = function ($c) {
-    return new App\Http\Controllers\Auth\AuthController($c);
+$container['UserController'] = function ($c) {
+    return new App\Http\Controllers\Auth\UserController($c);
 };
 
-$container['CmdController'] = function ($c) {
-    return new App\Http\Controllers\Cmd\CmdController($c);
+
+// CMDs //
+
+// Auth
+$container['NewUserController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\Auth\NewUserController($c);
+};
+
+$container['LoginController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\Auth\LoginController($c);
+};
+
+$container['LogoutController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\Auth\LogoutController($c);
 };

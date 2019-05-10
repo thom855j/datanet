@@ -1,4 +1,20 @@
-$(document).ready(function(){
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+    <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
+
+    <p data-ty="input">Logged in as user {{ auth.user.user_login | upper }}.</p>
+    <p data-ty="input">Last login was 2d ago.</p>
+
+    </div>
+
+    <form>
+    <span>.<input type="text" name="cmd" id="input"/></span>
+    </form>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
 
     $('input').focus();
 
@@ -25,7 +41,7 @@ $(document).ready(function(){
 
             $.ajax({
                 type: "POST",
-                url: getUrl() + "/cmd/" + url,
+                url: "{{ base_url() }}/cmd/" + url,
                 cache: false,
                 data: post_data,
                 success: function(data){  
@@ -37,7 +53,7 @@ $(document).ready(function(){
                        return window.location.href = response.redirect_url;
 
                     } else {
-                        $("#terminal").append(response.error, "<br>"); //Insert chat log into the #terminal div  
+                        $("#terminal").append(data, "<br>"); //Insert chat log into the #terminal div  
                     }   
                                   
                 },
@@ -60,4 +76,6 @@ $(document).ready(function(){
 
 
 
-}); 
+    }); 
+    </script>
+{% endblock %}

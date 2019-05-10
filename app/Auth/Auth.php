@@ -20,16 +20,18 @@ class Auth {
         return isset($_SESSION['user']);
     }
 
-    public function attempt($email, $password) {
+    public function attempt($username, $password) {
 
-        $user = User::where('email', $email)->first();
+        $user = User::where('user_login', $username)->first();
 
         if (!$user) {
             return false;
         }
 
-        if (password_verify($password, $user->password)) {
-            $_SESSION['user'] = $user->id;
+        
+        if ($password == base64_decode($user->user_pass)) {
+
+            $_SESSION['user'] = $user->ID;
             return true;
         }
 

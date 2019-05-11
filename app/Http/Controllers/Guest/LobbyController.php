@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 class LobbyController extends Controller {
 
     public function index($req, $res, $args) {
+
         return $this->view->render($res, 'guest/lobby.twig');
     }
 

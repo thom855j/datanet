@@ -22,27 +22,11 @@ class NewUserController extends Controller {
         ]);
     }
 
-    public function get($req, $res, $args) {
+    private function createUser($req) {
 
-       return $this->post($req, $res, $args);
-
-    }
-
-    public function post($req, $res, $args) {
-
-
-        $cmd = explode(' ', $req->getParam('input'));
-
-
-        if( count($cmd) < 2) {
-            echo json_encode(['error'=> 'Missing parameters. Have to be <b>NEWUSER</b> < username > < password > [ email ].']);
-            return false;
-        }
-
-        if( count($cmd) == 3 ) {
-            $v = $this->validator->validate($req, [
+         $v = $this->validator->validate($req, [
                 'username' => v::notEmpty()->usernameExists(),
-                'password' => v::noWhitespace()->notEmpty(),
+                'password' => v::noWhitespace()->notEmpty()
             ]);
 
             if ($v->failed()) {
@@ -51,14 +35,14 @@ class NewUserController extends Controller {
                     foreach ($_SESSION['errors']['username'] as $error) {
                          $errors .= $error;
                     }
-                    echo json_encode(['error'=> $errors]);
+                    echo json_encode(['feedback'=> $errors]);
                 }
 
                 if( isset($_SESSION['errors']['password']) )  {
                     foreach ($_SESSION['errors']['password'] as $error) {
                          $errors .= $error;
                     }
-                    echo json_encode(['error'=> $errors]);
+                    echo json_encode(['feedback'=> $errors]);
                 }
                 return false;
             }
@@ -66,8 +50,8 @@ class NewUserController extends Controller {
 
             $user = User::create([
                 'user_login' => $req->getParam('username'),
-                'user_status' => 1,
-                'user_ip' => getIP()
+                'user_active' => 1,
+                'user_ip' => getUserLocation()
             ]);
 
             $user->setPassword($req->getParam('password'));
@@ -75,11 +59,12 @@ class NewUserController extends Controller {
             $this->auth->attempt($req->getParam('username'), $req->getParam('password'));
 
             return $this->redirectUrl($req->getParam('username'));
+    }
 
-        } if (count($cmd) == 4) {
 
+    private function createUserWithEmail($req) {
 
-             $v = $this->validator->validate($req, [
+            $v = $this->validator->validate($req, [
                 'username' => v::notEmpty()->usernameExists(),
                 'password' => v::noWhitespace()->notEmpty(),
                 'email' => v::noWhitespace()->notEmpty()->email()->emailExists()
@@ -91,21 +76,21 @@ class NewUserController extends Controller {
                     foreach ($_SESSION['errors']['username'] as $error) {
                          $errors .= $error;
                     }
-                    echo json_encode(['error'=> $errors]);
+                    echo json_encode(['feedback'=> $errors]);
                 }
 
                 if( isset($_SESSION['errors']['password']) )  {
                     foreach ($_SESSION['errors']['password'] as $error) {
                           $errors .= $error;
                     }
-                    echo json_encode(['error'=> $errors]);
+                    echo json_encode(['feedback'=> $errors]);
                 }
 
                  if( isset($_SESSION['errors']['email']) )  {
                     foreach ($_SESSION['errors']['email'] as $error) {
                           $errors .= $error;
                     }
-                    echo json_encode(['error'=> $errors]);
+                    echo json_encode(['feedback'=> $errors]);
                 }
                 return false;
             }
@@ -114,7 +99,7 @@ class NewUserController extends Controller {
             $user = User::create([
                 'user_login' => $req->getParam('username'),
                 'user_email' => $req->getParam('email'),
-                'user_status' => 1,
+                'user_active' => 1,
                 'user_ip' => getIP()
             ]);
 
@@ -123,9 +108,35 @@ class NewUserController extends Controller {
             $this->auth->attempt($req->getParam('username'), $req->getParam('password'));
 
             return $this->redirectUrl($req->getParam('username'));
+           
+    }
 
+    public function get($req, $res, $args) {
+
+       return $this->post($req, $res, $args);
+
+    }
+
+    public function post($req, $res, $args) {
+
+        $cmd = explode(' ', $req->getParam('input'));
+
+        if( count($cmd) < 2) {
+
+            echo json_encode(['feedback'=> 'Missing parameters. Have to be <b>NEWUSER</b> < username > < password > [ email ].']);
+            return false;
+        }
+
+        if( count($cmd) == 3 ) {
+
+            return $this->createUser($req);
+
+        } if (count($cmd) == 4) {
+
+            return $this->createUserWithEmail($req);
+         
         } else {
-           return $res->response->setStatus(500);
+           //return $res->response->setStatus(404);
         }
         
 

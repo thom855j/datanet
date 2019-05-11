@@ -31,20 +31,21 @@ class LoginController extends Controller {
         $cmd = explode(' ', $req->getParam('input'));
 
         if( count($cmd) < 2) {
-            echo json_encode(['error'=> 'Missing parameters. Have to be <b>LOGIN</b> < username > < password >.']);
+            echo json_encode(['feedback'=> 'Missing parameters. Have to be <b>LOGIN</b> < username > < password >.']);
             return false;
         }
 
         $user = $this->auth->attempt($req->getParam('username'), $req->getParam('password'));
 
-        if($user && $user->user_status == 1) {
+        if($user && $this->auth->user()->user_active == 1) {
 
-            $this->auth->update(['user_ip' =>getIP()]);
+            $this->auth->user()->update(['user_ip' => getUserLocation()]);
+            $this->auth->user()->touch();
             return $this->redirectUrl($req->getParam('username'));
 
         } else {
             echo json_encode(
-                ['error'=> 'Identification not recognized by system or user banned. Please try again.']
+                ['feedback'=> 'Identification not recognized by system or user banned. Please try again.']
             );
             return false;
         }

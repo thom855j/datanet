@@ -8,7 +8,7 @@
 
 namespace App\Validation\Rules;
 
-use App\Models\User;
+use App\Models\Users\User;
 use Respect\Validation\Rules\AbstractRule;
 
 class UsernameExists extends AbstractRule {

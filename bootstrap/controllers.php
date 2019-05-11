@@ -25,3 +25,12 @@ $container['LoginController'] = function ($c) {
 $container['LogoutController'] = function ($c) {
     return new App\Http\Controllers\Cmd\Auth\LogoutController($c);
 };
+
+// User
+$container['StatusController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\User\StatusController($c);
+};
+
+$container['FingerController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\User\FingerController($c);
+};

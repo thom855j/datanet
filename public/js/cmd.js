@@ -1,4 +1,3 @@
-
 var terminalID = "terminal";
 
 
@@ -17,7 +16,7 @@ function cmd(input) {
 
     return true;
 
-  } else if(typeof window[client] !== "undefined" && eval(client).length == 0) {
+  } else if(typeof window[client] !== "undefined" && window[client].length == 0) {
 
     return eval(client + "();");
 
@@ -28,9 +27,55 @@ function cmd(input) {
 
 }
 
+// System
 function clear() {
   document.getElementById(terminalID).innerHTML = "";
   return false;
+}
+
+
+// Auth
+function newuser(input) {
+
+  var post_data = true;
+
+  var cmd = input.split(" ");
+
+  if(cmd.length === 3) {
+    post_data = {
+      input: input, 
+      username: cmd[1], 
+      password: cmd[2]
+    };
+
+  } else if(cmd.length === 4) {
+    post_data = {
+      input: input, 
+      username: cmd[1], 
+      password: cmd[2],
+      email: cmd[3]
+    };
+  }
+
+  return post_data;
+}
+
+function login(input) {
+
+  var post_data = true;
+
+  var cmd = input.split(" ");
+
+  if(cmd.length === 3) {
+    post_data = {
+      input: input, 
+      username: cmd[1], 
+      password: cmd[2]
+    };
+
+  }
+
+  return post_data;
 }
 
 function logout() {
@@ -62,46 +107,52 @@ function quit() {
 }
 
 
-function newuser(input) {
+// User
+function status(input) {
 
   var post_data = true;
 
   var cmd = input.split(" ");
 
-  if(cmd.length === 3) {
+  var message = input.replace(cmd[0], "");
+
+  console.log(message);
+
+  if(cmd.length >= 2) {
     post_data = {
       input: input, 
-      username: cmd[1], 
-      password: cmd[2]
+      message: message.trim()
     };
 
-  } else if(cmd.length === 4) {
-    post_data = {
-      input: input, 
-      username: cmd[1], 
-      password: cmd[2],
-      email: cmd[3]
-    };
-  }
+  } 
 
   return post_data;
 }
 
-
-function login(input) {
+function finger(input) {
 
   var post_data = true;
 
-  var cmd = input.split(" ");
-
-  if(cmd.length === 3) {
+  if(input.length == 1) {
     post_data = {
-      input: input, 
-      username: cmd[1], 
-      password: cmd[2]
+      input: input
     };
 
+  } else {
+
+  var cmd = input.split(" ");
+
+  if(cmd.length > 2) {
+    post_data = {
+      input: input, 
+      message: input
+    };
   }
+
+  } 
 
   return post_data;
 }
+
+
+

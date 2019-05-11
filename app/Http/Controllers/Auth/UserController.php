@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller {
 
     public function getIndex($req, $res, $args) {
+
         return $this->view->render($res, 'auth/user/index.twig');
     }
 

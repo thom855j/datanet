@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
-    $('input').focus();
-
-    $("#input").inputhistory();
+    $('#input').focus();
 
             //If user submits the form
         $("form").submit(function(e){
@@ -30,6 +28,10 @@ $(document).ready(function(){
                 data: post_data,
                 success: function(data){  
 
+                    if(DEBUG) {
+                        return $("#terminal").append(data, "<br>");
+                    }
+
                    var response = $.parseJSON(data);  
 
                     if (response.redirect !== undefined && response.redirect) {
@@ -37,7 +39,7 @@ $(document).ready(function(){
                        return window.location.href = response.redirect_url;
 
                     } else {
-                        $("#terminal").append(response.error, "<br>"); //Insert chat log into the #terminal div  
+                        $("#terminal").append(response.feedback, "<br>"); //Insert chat log into the #terminal div  
                     }   
                                   
                 },

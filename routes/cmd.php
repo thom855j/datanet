@@ -1,6 +1,6 @@
 <?php
 
-$app->get('/cmd/newuser', 'NewUserController:get');
+$app->get('/cmd/newuser', 'NewUserController:get')->setName('cmd.newuser');
 $app->post('/cmd/newuser', 'NewUserController:post');
 
 $app->get('/cmd/login', 'LoginController:get');

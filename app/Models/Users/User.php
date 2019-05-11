@@ -26,6 +26,7 @@ class User extends Model {
         'user_ip',
         'user_activation_key',
         'user_status',
+        'user_active',
         'display_name'
     ];
 
@@ -34,6 +35,7 @@ class User extends Model {
             'user_pass' => base64_encode($password),
         ]);
     }
+    
 
 
 }

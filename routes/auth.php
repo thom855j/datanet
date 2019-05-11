@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 
+/*
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\GuestMiddleware;
 
@@ -34,3 +35,4 @@ $app->group('', function() {
     $this->get('/auth/logout', 'AuthController:getLogout')->setName('auth.logout');
 })->add(new AuthMiddleware($container));
 
+*/

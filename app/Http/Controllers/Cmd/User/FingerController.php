@@ -19,16 +19,13 @@ class FingerController extends Controller {
 
     public function post($req, $res, $args) {
 
-        $cmd = explode(' ', $req->getParam('input'));
+        if( count($_SESSION['input']) === 1) {
+            $data = User::where("user_active", "=", 1)
+            ->select('user_login AS username', 'user_last as last', 'user_ip as where', 'user_status AS status')
+            ->get()
+            ->toArray();
 
-    if( count($cmd) === 1) {
-        $data = User::where("user_active", "=", 1)
-        ->select('user_login AS username', 'user_last as last', 'user_ip as where', 'user_status AS status')
-        ->get()
-        ->toArray();
-
-        echo json_encode(['feedback'=> htmlTable($data)]);
-
+            echo json_encode(['feedback'=> htmlTable($data)]);
           
         }
 

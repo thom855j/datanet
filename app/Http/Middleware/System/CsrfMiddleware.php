@@ -6,7 +6,8 @@
  * and open the template in the editor.
  */
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\System;
+use App\Http\Middleware\Middleware;
 
 class CsrfMiddleware extends Middleware {
 

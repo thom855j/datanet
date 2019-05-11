@@ -6,14 +6,16 @@
  * and open the template in the editor.
  */
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Cmd;
+use App\Http\Middleware\Middleware;
 
-class PersistingInputMiddleware extends Middleware {
+class AuthMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
 
-        $this->c->view->getEnvironment()->addGlobal('input', $_SESSION['input']);
-        $_SESSION['input'] = $req->getParams();
+        if(!$this->auth->check()) {
+            return $this->response->withStatus(404);
+        }
 
         return $next($req, $res);
     }

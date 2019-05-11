@@ -28,9 +28,7 @@ class LoginController extends Controller {
 
     public function post($req, $res, $args) {
 
-        $cmd = explode(' ', $req->getParam('input'));
-
-        if( count($cmd) < 2) {
+        if( count($_SESSION['input']) < 2) {
             echo json_encode(['feedback'=> 'Missing parameters. Have to be <b>LOGIN</b> < username > < password >.']);
             return false;
         }
@@ -39,8 +37,7 @@ class LoginController extends Controller {
 
         if($user && $this->auth->user()->user_active == 1) {
 
-            $this->auth->user()->update(['user_ip' => getUserLocation()]);
-            $this->auth->user()->touch();
+            //$this->auth->user()->update(['user_ip' => getUserLocation()]);
             return $this->redirectUrl($req->getParam('username'));
 
         } else {

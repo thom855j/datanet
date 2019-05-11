@@ -18,6 +18,7 @@ class LogoutController extends Controller {
 
         echo json_encode([
             'redirect' => 1, 
+            'feedback' => 'Session closed.',
             'redirect_url' => $this->router->pathFor('system.lobby')
         ]);
     }
@@ -30,6 +31,8 @@ class LogoutController extends Controller {
     public function post($req, $res, $args) {
 
         if($this->auth) {
+        
+            $this->auth->user()->touch();
             $this->auth->logout();
             return $this->redirectUrl();
         }

@@ -119,9 +119,7 @@ class NewUserController extends Controller {
 
     public function post($req, $res, $args) {
 
-        $cmd = explode(' ', $req->getParam('input'));
-
-        if( count($cmd) < 2) {
+        if( count($_SESSION['input']) < 2) {
 
             echo json_encode(['feedback'=> 'Missing parameters. Have to be <b>NEWUSER</b> < username > < password > [ email ].']);
             return false;
@@ -136,7 +134,7 @@ class NewUserController extends Controller {
             return $this->createUserWithEmail($req);
          
         } else {
-           //return $res->response->setStatus(404);
+            return $this->response->withStatus(500);
         }
         
 

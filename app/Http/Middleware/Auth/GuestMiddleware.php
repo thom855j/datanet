@@ -6,7 +6,8 @@
  * and open the template in the editor.
  */
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Auth;
+use App\Http\Middleware\Middleware;
 
 class GuestMiddleware extends Middleware {
 

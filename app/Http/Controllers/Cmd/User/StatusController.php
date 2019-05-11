@@ -18,11 +18,7 @@ class StatusController extends Controller {
 
     public function post($req, $res, $args) {
 
-        $cmd = explode(' ', $req->getParam('input'));
-
-        var_dump($cmd);
-
-        if( count($cmd) < 2) {
+        if( count($_SESSION['input']) < 2) {
 
             echo json_encode(['feedback'=> 'Missing parameters. Use <b>STATUS</b> < message > (250 chars max).']);
             return false;

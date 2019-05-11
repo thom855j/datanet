@@ -36,8 +36,14 @@ $(document).ready(function(){
 
                     if (response.redirect !== undefined && response.redirect) {
 
-                       return window.location.href = response.redirect_url;
+                        if(response.feedback !== undefined) {
+                            $("#terminal").append(response.feedback, "<br>");
+                        }
 
+                        setTimeout(function(){
+                            return window.location.href = response.redirect_url;
+                        }, 2000);
+                 
                     } else {
                         $("#terminal").append(response.feedback, "<br>"); //Insert chat log into the #terminal div  
                     }   

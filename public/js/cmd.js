@@ -80,26 +80,12 @@ function login(input) {
 
 function logout() {
 
-  $.post(getUrl() + "cmd/logout", " ", function(data, status){
+  return post_data = true;
 
-      var response = $.parseJSON(data);  
-
-      if (response.redirect !== undefined && response.redirect) {
-
-        return window.location.href = response.redirect_url;
-
-      } else {
-
-        $("#terminal").append(response.error, "<br>"); //Insert chat log into the #terminal div  
-      }   
-      
-    });
-
-  return false;
 }
 
 function exit() {
-  return logout();
+ return window.location.replace(document.referrer);
 }
 
 function quit() {

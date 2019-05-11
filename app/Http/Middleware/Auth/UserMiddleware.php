@@ -6,9 +6,10 @@
  * and open the template in the editor.
  */
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Auth;
+use App\Http\Middleware\Middleware;
 
-class AuthMiddleware extends Middleware {
+class UserMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
 

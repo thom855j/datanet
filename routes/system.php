@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\GuestMiddleware;
+use App\Http\Middleware\Auth\GuestMiddleware;
 
 $app->group('', function() {
 

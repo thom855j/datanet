@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App\Models;
+namespace App\Models\Hosts;
 
 use Illuminate\Database\Eloquent\Model;
 

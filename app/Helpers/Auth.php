@@ -9,11 +9,16 @@
 namespace App\Helpers;
 
 use App\Models\Users\User;
+use App\Models\Hosts\Host;
 
 class Auth {
 
     public function user() {
         return User::find($_SESSION['user']);
+    }
+
+     public function host() {
+        return Host::where('host_root', '=', $_SESSION['user']);
     }
 
     public function check() {

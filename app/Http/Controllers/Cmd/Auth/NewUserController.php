@@ -121,7 +121,7 @@ class NewUserController extends Controller {
 
         if( count($_SESSION['input']) < 2) {
 
-            echo json_encode(['feedback'=> 'Missing parameters. Have to be <b>NEWUSER</b> < username > < password > [ email ].']);
+            echo json_encode(['feedback'=> 'Missing parameters. Use <b>NEWUSER</b> < username > < password > [ email ].']);
             return false;
         }
 

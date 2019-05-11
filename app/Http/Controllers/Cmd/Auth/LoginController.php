@@ -29,7 +29,7 @@ class LoginController extends Controller {
     public function post($req, $res, $args) {
 
         if( count($_SESSION['input']) < 2) {
-            echo json_encode(['feedback'=> 'Missing parameters. Have to be <b>LOGIN</b> < username > < password >.']);
+            echo json_encode(['feedback'=> 'Missing parameters. Use <b>LOGIN</b> < username > < password >.']);
             return false;
         }
 

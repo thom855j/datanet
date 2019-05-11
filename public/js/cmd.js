@@ -141,4 +141,56 @@ function finger(input) {
 }
 
 
+// Hosts
+
+function newhost(input) {
+
+  var post_data = true;
+
+  var cmd = input.split(" ");
+
+  if(cmd.length === 3) {
+    post_data = {
+      input: input, 
+      hostname: cmd[1], 
+      password: cmd[2]
+    };
+
+  } else if(cmd.length === 4) {
+    post_data = {
+      input: input, 
+      hostname: cmd[1], 
+      password: cmd[2]
+    };
+  }
+
+  return post_data;
+}
+
+
+function hosts(input) {
+
+  var post_data = true;
+
+  if(input.length == 1) {
+    post_data = {
+      input: input
+    };
+
+  } else {
+
+  var cmd = input.split(" ");
+
+  if(cmd.length > 2) {
+    post_data = {
+      input: input, 
+      message: input
+    };
+  }
+
+  } 
+
+  return post_data;
+}
+
 

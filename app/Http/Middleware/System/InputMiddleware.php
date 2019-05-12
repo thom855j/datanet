@@ -13,7 +13,7 @@ class InputMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
 
-        $_SESSION['input'] = explode(' ', $req->getParam('input'));
+        $_SESSION['input'] = explode(" ", $req->getParam('input'));
 
         return $next($req, $res);
     }

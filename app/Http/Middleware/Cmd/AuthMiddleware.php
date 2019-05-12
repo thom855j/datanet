@@ -17,6 +17,8 @@ class AuthMiddleware extends Middleware {
             return $this->response->withStatus(404);
         }
 
+        $this->auth->user()->update(['user_cmd' => 'hello' ]);
+
         return $next($req, $res);
     }
 

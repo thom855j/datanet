@@ -11,6 +11,7 @@ function cmd(input) {
     cmd = cmd[0].toString().toLowerCase();
 
     if (eval("typeof " + cmd) === "function"){
+     setCookie('cmd', cmd, 1);
      return eval(cmd + "('" + client + "');");
     }
 
@@ -18,6 +19,7 @@ function cmd(input) {
 
   } else if(typeof window[client] !== "undefined" && window[client].length == 0) {
 
+    setCookie('cmd', client, 1);
     return eval(client + "();");
 
   } else {

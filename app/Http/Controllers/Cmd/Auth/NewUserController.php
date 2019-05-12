@@ -125,11 +125,11 @@ class NewUserController extends Controller {
             return false;
         }
 
-        if( count($cmd) == 3 ) {
+        if( count($_SESSION['input']) == 3 ) {
 
             return $this->createUser($req);
 
-        } if (count($cmd) == 4) {
+        } if (count($_SESSION['input']) == 4) {
 
             return $this->createUserWithEmail($req);
          

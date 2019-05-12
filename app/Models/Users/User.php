@@ -27,7 +27,7 @@ class User extends Model {
         'user_activation_key',
         'user_status',
         'user_active',
-        'display_name'
+        'user_cmd'
     ];
 
     public function setPassword($password) {

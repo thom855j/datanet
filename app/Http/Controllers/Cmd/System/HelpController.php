@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers\Cmd\System;
+use App\Models\System\Command;
 
 use App\Http\Controllers\Controller;
 
@@ -21,10 +22,10 @@ class HelpController extends Controller {
         if( count($_SESSION['input']) === 1) {
 
             if($this->auth->check()) {
-                $data = require APP_DATA . 'commands/auth.php';
+                $data = Command::getCommands(true);
                 echo json_encode(['feedback'=> multiTable($data)]);
             } else {
-                $data = require APP_DATA . 'commands/guest.php';
+                $data = Command::getCommands(false);
                 echo json_encode(['feedback'=> multiTable($data)]);
             }
           

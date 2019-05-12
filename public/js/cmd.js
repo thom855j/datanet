@@ -27,10 +27,56 @@ function cmd(input) {
 
 }
 
+
 // System
 function clear() {
+  localStorage.removeItem('history');
   document.getElementById(terminalID).innerHTML = "";
   return false;
+}
+
+function help(input) {
+
+  var post_data = true;
+
+  if(input.length == 1) {
+    post_data = {
+      input: input
+    };
+
+  } else {
+
+  var cmd = input.split(" ");
+
+  if(cmd.length > 2) {
+    post_data = {
+      input: input, 
+      message: input
+    };
+  }
+
+  } 
+
+  return post_data;
+}
+
+function echo(input) {
+
+  var post_data = true;
+
+  var cmd = input.split(" ");
+
+  var message = input.replace(cmd[0], "");
+
+  if(cmd.length >= 2) {
+    post_data = {
+      input: input, 
+      message: message.trim()
+    };
+
+  } 
+
+  return post_data;
 }
 
 
@@ -92,6 +138,14 @@ function quit() {
   return logout();
 }
 
+function bye() {
+  return logout();
+}
+
+function logoff() {
+  return logout();
+}
+
 
 // User
 function status(input) {
@@ -101,8 +155,6 @@ function status(input) {
   var cmd = input.split(" ");
 
   var message = input.replace(cmd[0], "");
-
-  console.log(message);
 
   if(cmd.length >= 2) {
     post_data = {

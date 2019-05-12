@@ -10,7 +10,22 @@ function jsonToDebug($jsonText = '')
     return $html;
 }
 
-function htmlTable($array){
+function singleTable($array) {
+
+  $html = '<table>';
+    foreach(array_chunk($array, 3) as $row) {
+    $html .= "<tr>";
+    foreach($row as $cell) {
+         $html .= "<td>$cell</td>";   
+    }
+     $html .= "</tr>";
+}
+ $html .=  "</table>";
+
+ return $html;
+}
+
+function multiTable($array){
     // start table
     $html = '<table>';
     // header row

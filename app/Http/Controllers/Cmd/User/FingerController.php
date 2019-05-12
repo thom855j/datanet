@@ -25,7 +25,7 @@ class FingerController extends Controller {
             ->get()
             ->toArray();
 
-            echo json_encode(['feedback'=> htmlTable($data)]);
+            echo json_encode(['feedback'=> multiTable($data)]);
           
         }
 

@@ -3,6 +3,10 @@
 use App\Http\Middleware\Cmd\AuthMiddleware;
 use App\Http\Middleware\Cmd\UnknownMiddleware;
 
+// System
+$app->post('/cmd/help', 'HelpController:post');
+$app->post('/cmd/echo', 'EchoController:post');
+
 $app->group('', function() {
     // Newuser
     $this->get('/cmd/newuser', 'NewUserController:get')->setName('cmd.newuser');

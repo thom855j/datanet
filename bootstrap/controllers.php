@@ -1,5 +1,4 @@
 <?php
-
 // Controller configuration
 
 $container['LobbyController'] = function ($c) {
@@ -16,6 +15,17 @@ $container['HostController'] = function ($c) {
 
 
 // CMDs //
+
+
+// Help
+$container['HelpController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\System\HelpController($c);
+};
+
+// Echo
+$container['EchoController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\System\EchoController($c);
+};
 
 // Guest
 $container['NewUserController'] = function ($c) {
@@ -43,7 +53,6 @@ $container['FingerController'] = function ($c) {
 $container['HostsController'] = function ($c) {
     return new App\Http\Controllers\Cmd\Host\HostsController($c);
 };
-
 
 
 // Host

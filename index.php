@@ -54,7 +54,8 @@ define('APP_SITEURL', env('APP_SITEURL'));
  * Directories
  */
 define('APP_SRC', $webroot_dir . 'bootstrap/');
-define('APP_VIEWS', $webroot_dir . 'resources/views/');
+define('APP_DATA', $webroot_dir . 'resources/');
+define('APP_VIEWS', APP_DATA . 'views/');
 define('APP_LOG', $webroot_dir . 'storage/logs/app.log');
 
 define('APP_CACHE', env('APP_CACHE') ?: $webroot_dir . 'storage/cache/');

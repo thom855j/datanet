@@ -35,6 +35,23 @@ class User extends Model {
             'user_pass' => base64_encode($password),
         ]);
     }
+
+    public function getFinger() {
+       return User::where('user_active', '=', 1)
+            ->select('user_login AS username', 'user_status AS status', 'user_last as last', 'user_ip as where')
+            ->get()
+            ->toArray();
+    }
+
+    public function getUsers($number = 0 , $max = 10) {
+
+       return User::where('user_active', '=', 1)
+            ->select('user_login AS username', 'user_status AS status', 'user_last as last', 'user_ip as where')
+            ->skip($number)
+            ->take($max)
+            ->get()
+            ->toArray();
+    }
     
 
 

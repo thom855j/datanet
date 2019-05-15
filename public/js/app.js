@@ -2,8 +2,6 @@ $(document).ready(function(){
 
     $('#input').focus();
 
-    var oldscrollHeight = $("#terminal").prop("scrollHeight") - 20; //Scroll height before the 
-
             //If user submits the form
         $("form").submit(function(e){
 
@@ -46,7 +44,7 @@ $(document).ready(function(){
 
                             setTimeout(function(){
                                 return window.location.href = response.redirect_url;
-                            }, 2000);
+                            }, 1000);
                      
                         } else {
                             $("#terminal").append(response.feedback, "<br>"); //Insert chat log into the #terminal div  
@@ -61,11 +59,8 @@ $(document).ready(function(){
 
             }
 
-                         //Auto-scroll  
-            var newscrollHeight = $("#terminal").prop("scrollHeight") - 20; //Scroll height after the request
-            if(newscrollHeight > oldscrollHeight){
-                $("#terminal").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
-            } 
+            //Auto-scroll  
+           $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
             
             $("#input").prop("value", "");
         });

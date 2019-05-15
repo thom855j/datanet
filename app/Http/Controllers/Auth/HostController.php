@@ -14,6 +14,8 @@ class HostController extends Controller {
 
     public function getIndex($req, $res, $args) {
 
+        $host = $this->auth->host();
+        var_dump($host);
         return $this->view->render($res, 'auth/host/index.twig');
     }
 

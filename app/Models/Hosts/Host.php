@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Host extends Model {
 
-    const CREATED_AT = 'user_date';
-    const UPDATED_AT = 'user_modified';
+    const CREATED_AT = 'host_date';
+    const UPDATED_AT = 'host_modified';
 
     protected $table = 'hosts';
 
@@ -21,9 +21,11 @@ class Host extends Model {
 
     protected $fillable = [
         'host_root',
+        'host_ip',
         'host_name',
         'host_password',
-        'host_motd'
+        'host_motd',
+        'host_active'
     ];
 
     public function setPassword($password) {

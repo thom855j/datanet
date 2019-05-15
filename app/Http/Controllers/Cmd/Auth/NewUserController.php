@@ -56,7 +56,7 @@ class NewUserController extends Controller {
 
             $user->setPassword($req->getParam('password'));
 
-            $this->auth->attempt($req->getParam('username'), $req->getParam('password'));
+            $this->auth->userAttempt($req->getParam('username'), $req->getParam('password'));
 
             return $this->redirectUrl($req->getParam('username'));
     }

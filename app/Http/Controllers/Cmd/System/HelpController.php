@@ -23,10 +23,14 @@ class HelpController extends Controller {
 
             if($this->auth->check()) {
                 $data = Command::getCommands(true);
-                echo json_encode(['feedback'=> multiTable($data)]);
+                $more = '<br> More commands become available after login to host.';
+                
+                echo json_encode(['feedback'=> multiTable($data) . $more]);
             } else {
                 $data = Command::getCommands(false);
-                echo json_encode(['feedback'=> multiTable($data)]);
+                $more = '<br> More commands become available after login.';
+
+                echo json_encode(['feedback'=> multiTable($data) . $more]);
             }
           
         }

@@ -1,0 +1,19 @@
+/* BASIC CSS */
+
+/*
+* Setup
+*/
+body, input, a {
+  background: #000000;
+  color:  #00FF00;
+  text-shadow: #00FF00 0 -1px 35px;
+}
+
+
+/*
+ *  Scrollbar style
+ */
+body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner, body::-webkit-scrollbar
+{
+    background-color: #000000;
+}

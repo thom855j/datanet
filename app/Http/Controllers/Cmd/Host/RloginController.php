@@ -9,16 +9,16 @@
 namespace App\Http\Controllers\Cmd\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Users\User;
+use App\Models\Hosts\Host;
 use Respect\Validation\Validator as v;
 
-class LoginController extends Controller {
+class RloginController extends Controller {
 
     private function redirectUrl($username) {
 
-        echo json_encode([
+         echo json_encode([
             'redirect' => 1, 
-            'redirect_url' => $this->router->pathFor('auth.user', ['username' => $username])
+            'redirect_url' => $this->router->pathFor('auth.host', ['hostname' => $hostname])
         ]);
     }
 
@@ -29,13 +29,13 @@ class LoginController extends Controller {
     public function post($req, $res, $args) {
 
         if( count($_SESSION['input']) < 2) {
-            echo json_encode(['feedback'=> 'Missing parameters. Use <b>LOGIN</b> < username > < password >.']);
+            echo json_encode(['feedback'=> 'Missing parameters. Use <b>LOGIN</b> < hostname > < password >.']);
             return false;
         }
 
-        $user = $this->auth->userAttempt($req->getParam('username'), $req->getParam('password'));
+        $user = $this->auth->hostAttempt($req->getParam('hostname'), $req->getParam('password'));
 
-        if($user && $this->auth->user()->user_active == 1) {
+        if($user && $this->auth->host()->host_active == 1) {
 
             //$this->auth->user()->update(['user_ip' => getUserLocation()]);
             return $this->redirectUrl($req->getParam('username'));

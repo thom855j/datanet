@@ -1,0 +1,20 @@
+/* IBM-DOS CSS */
+
+/*
+* Setup
+*/
+body, input, a {
+  background: #010101;
+  color:  #BBBBBB;
+  text-shadow: none;
+}
+
+
+/*
+ *  Scrollbar style
+ */
+body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner, body::-webkit-scrollbar
+{
+    background-color: #010101;
+}
+

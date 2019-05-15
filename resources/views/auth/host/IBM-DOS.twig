@@ -1,0 +1,31 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+    <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
+
+    <p data-ty="input">Trying...</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Connected to</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Current time is {{ "now"|date("g:i", 'Europe/Copenhagen') }}.</p>
+
+    <br data-ty>
+
+    <p data-ty="input">The IBM Personal Computer DOS</p>
+    <p data-ty="input">Version 1.0 (C)Copyright IBM Corp 1981, 1982</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Type <b>HELP</b> for detailed command list.</p>
+    </div>
+
+    <form>
+    <span>@<input type="text" name="cmd" id="input" autocomplete="off"/></span>
+    </form>
+    
+{% endblock %}

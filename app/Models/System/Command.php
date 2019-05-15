@@ -28,12 +28,12 @@ class Command extends Model {
     public function getCommands($auth = false) {
        
         if($auth) {
-        return  Command::where('cmd_auth',1)
+        return  Command::where('cmd_auth','auth')->orWhere('cmd_auth', 'all')
             ->select('cmd_name AS CMD', 'cmd_args as ARGS', 'cmd_alias as ALIAS', 'cmd_desc AS DESC')
             ->get()->toArray();
         }
 
-        return  Command::where('cmd_auth',0)
+        return  Command::where('cmd_auth','guest')->orWhere('cmd_auth', 'all')
             ->select('cmd_name AS CMD', 'cmd_args as ARGS', 'cmd_alias as ALIAS', 'cmd_desc AS DESC')
             ->get()->toArray();
 

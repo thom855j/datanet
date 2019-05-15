@@ -23,7 +23,8 @@ class NewHostController extends Controller {
     }
 
     public function get($req, $res, $args) {
-        return $this->view->render($res, 'auth/host/index.twig');
+       return $this->post($req, $res, $args);
+       // return $this->view->render($res, 'auth/host/IBM-DOS.twig');
     }
 
     private function createHost($req) {
@@ -51,11 +52,17 @@ class NewHostController extends Controller {
                 return false;
             }
 
+            $host_os = $req->getParam('os') ? $req->getParam('os') : 'UNIX';
+
             $host = Host::create([
-                'host_name' => $req->getParam('hostname')
+                'host_ip' => randomIP(),
+                'host_name' => $req->getParam('hostname'),
+                'host_type' => $host_os
             ]);
 
             $host->setPassword($req->getParam('password'));
+
+            $this->auth->hostAttempt($req->getParam('hostname'), $req->getParam('password'));
 
             return $this->redirectUrl($req->getParam('hostname'));
     }
@@ -64,7 +71,7 @@ class NewHostController extends Controller {
 
         if( count($_SESSION['input']) < 2) {
 
-            echo json_encode(['feedback'=> 'Missing parameters. Use <b>NEWHOST</b> < hostname > < password >.']);
+            echo json_encode(['feedback'=> 'Missing parameters. Use <b>NEWHOST</b> < hostname > < password > [os].']);
             return false;
         }
 
@@ -73,6 +80,7 @@ class NewHostController extends Controller {
             return $this->createHost($req);
 
         } else {
+
             return $this->response->withStatus(500);
         }
     }

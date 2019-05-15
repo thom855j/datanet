@@ -7,6 +7,14 @@ use App\Http\Middleware\Cmd\UnknownMiddleware;
 $app->post('/cmd/help', 'HelpController:post');
 $app->post('/cmd/echo', 'EchoController:post');
 
+// Finger
+$app->get('/cmd/finger', 'FingerController:get')->setName('cmd.finger');
+$app->post('/cmd/finger', 'FingerController:post');
+
+// Users
+$app->get('/cmd/users', 'UsersController:get')->setName('cmd.users');
+$app->post('/cmd/users', 'UsersController:post');
+
 $app->group('', function() {
     // Newuser
     $this->get('/cmd/newuser', 'NewUserController:get')->setName('cmd.newuser');
@@ -28,10 +36,6 @@ $app->group('', function() {
     // Newhost
     $this->get('/cmd/newhost', 'NewHostController:get')->setName('cmd.newhost');
     $this->post('/cmd/newhost', 'NewHostController:post');
-
-    // Finger
-    $this->get('/cmd/finger', 'FingerController:get')->setName('cmd.finger');
-    $this->post('/cmd/finger', 'FingerController:post');
 
     // Status
     $this->get('/cmd/status', 'StatusController:get')->setName('cmd.status');

@@ -18,14 +18,32 @@ class Auth {
     }
 
      public function host() {
-        return Host::where('host_root', '=', $_SESSION['user']);
+        return Host::where('ID', $_SESSION['host'])->first();
     }
 
     public function check() {
         return isset($_SESSION['user']);
     }
 
-    public function attempt($username, $password) {
+    public function hostAttempt($username, $password) {
+
+        $host = Host::where('user_name', $username)->first();
+
+        if (!$host) {
+            return false;
+        }
+
+        
+        if ($password == base64_decode($host->host_password)) {
+
+            $_SESSION['host'] = $host->ID;
+            return true;
+        }
+
+        return false;
+    }
+
+    public function userAttempt($username, $password) {
 
         $user = User::where('user_login', $username)->first();
 

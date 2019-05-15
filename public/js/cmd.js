@@ -34,6 +34,7 @@ function cmd(input) {
 function clear() {
   localStorage.removeItem('history');
   document.getElementById(terminalID).innerHTML = "";
+  $('#terminal').css('min-height', '0px');
   return false;
 }
 
@@ -126,6 +127,24 @@ function login(input) {
   return post_data;
 }
 
+function rlogin(input) {
+
+  var post_data = true;
+
+  var cmd = input.split(" ");
+
+  if(cmd.length === 3) {
+    post_data = {
+      input: input, 
+      hostname: cmd[1], 
+      password: cmd[2]
+    };
+
+  }
+
+  return post_data;
+}
+
 function logout() {
 
   return post_data = true;
@@ -169,6 +188,10 @@ function status(input) {
   return post_data;
 }
 
+function systat(input) {
+  return finger(input);
+}
+
 function finger(input) {
 
   var post_data = true;
@@ -185,7 +208,32 @@ function finger(input) {
   if(cmd.length > 2) {
     post_data = {
       input: input, 
-      message: input
+      args: input
+    };
+  }
+
+  } 
+
+  return post_data;
+}
+
+function users(input) {
+
+  var post_data = true;
+
+  if(input.length == 1) {
+    post_data = {
+      input: input
+    };
+
+  } else {
+
+  var cmd = input.split(" ");
+
+  if(cmd.length > 2) {
+    post_data = {
+      input: input, 
+      args: input
     };
   }
 
@@ -215,6 +263,13 @@ function newhost(input) {
       input: input, 
       hostname: cmd[1], 
       password: cmd[2]
+    };
+  } else if(cmd.length === 5) {
+    post_data = {
+      input: input, 
+      hostname: cmd[1], 
+      password: cmd[2],
+      os: cmd[3]
     };
   }
 

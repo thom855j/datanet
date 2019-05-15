@@ -11,17 +11,18 @@ namespace App\Http\Controllers\Cmd\User;
 use App\Http\Controllers\Controller;
 use App\Models\Users\User;
 
-class FingerController extends Controller {
+class UsersController extends Controller {
 
     public function get($req, $res, $args) {
-          return $this->post($req, $res, $args);
+         return $this->post($req, $res, $args);
     }
 
     public function post($req, $res, $args) {
 
         if( count($_SESSION['input']) === 1) {
 
-            $data = User::getFinger();
+            $data = User::getUsers();
+
             echo json_encode(['feedback'=> multiTable($data)]);
 
           

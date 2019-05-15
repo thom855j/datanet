@@ -1,4 +1,4 @@
-/* CSS Document */
+/* Default css */
 
 /* vt323-regular - latin */
 @font-face {
@@ -19,11 +19,8 @@
 * Setup
 */
 body, input, a {
-  background: #132432;
-  color:  #689FDA;
-  text-shadow: #689FDA 0 -1px 35px;
   font-family: 'VT323', Arial, Helvetica, sans-serif;;
-  font-size: 120%;
+  font-size: 125%;
   -webkit-font-smoothing: none;
   line-height: 1.2;
 }
@@ -33,11 +30,6 @@ form, p, span {
     padding:0;
 }
 
-/*
-tr td {
-  display: block;
-}
-*/
 
 /* 
 Generic Styling, for Desktops/Laptops 
@@ -94,47 +86,4 @@ textarea:focus, input:focus{
 
 #input {
   border: none;
-}
-
-
-/*
-* Commandline input
-*/
-
-/*
-#cmd {
-  padding: 10px;
-  overflow: hidden;
-}
-
-#cmd span {
-  float: left;
-  padding-left: 3px;
-  white-space: pre;
-}
-
-#cursor {
-  float: left;
-  width: 10px;
-  height: 24px;
-  background: #DEA02C;
-}
-input {
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-*/
-
-/*
- *  Scrollbar style
- */
-body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner
-{
-    background-color: #132432;
-}
-
-body::-webkit-scrollbar
-{
-    background-color: #132432;
 }

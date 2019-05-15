@@ -46,6 +46,10 @@ $container['StatusController'] = function ($c) {
     return new App\Http\Controllers\Cmd\User\StatusController($c);
 };
 
+$container['UsersController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\User\UsersController($c);
+};
+
 $container['FingerController'] = function ($c) {
     return new App\Http\Controllers\Cmd\User\FingerController($c);
 };

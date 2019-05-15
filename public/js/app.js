@@ -2,6 +2,10 @@ $(document).ready(function(){
 
     $('#input').focus();
 
+    $('#input').on('click', function() {
+        cmdHistory(localHistory(), 'input');
+    });
+
             //If user submits the form
         $("form").submit(function(e){
 
@@ -12,7 +16,7 @@ $(document).ready(function(){
             $("#terminal").append(input, "<br>");
 
             localHistory(input);
-            
+
             cmdHistory(localHistory(), 'input');
 
             var data = cmd(input);

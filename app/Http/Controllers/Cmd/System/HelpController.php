@@ -7,8 +7,8 @@
  */
 
 namespace App\Http\Controllers\Cmd\System;
-use App\Models\System\Command;
 
+use App\Models\System\Command;
 use App\Http\Controllers\Controller;
 
 class HelpController extends Controller {

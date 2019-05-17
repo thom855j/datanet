@@ -31,14 +31,22 @@ class Option extends Model {
        return unserialize($os);
     }
 
+    public function getAutoloadOptions() {
+
+       return Option::where('autoload', 'yes')->get();
+       
+    }
+
     public function getOptions($number = 0 , $max = 10) {
 
-       return Option::where('user_active', '=', 1)
-            ->select('user_login AS username', 'user_status AS status', 'user_last as last', 'user_ip as where')
-            ->skip($number)
+       return Option::skip($number)
             ->take($max)
             ->get()
             ->toArray();
+    }
+
+    public function getOption($name) {
+        return Option::where('option_name', $name)->first();
     }
 
 }

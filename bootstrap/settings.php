@@ -2,6 +2,10 @@
 
 return [
     'settings' => [
+        'url' => [
+            'local' => APP_HOME,
+            'remote' => APP_SITEURL,
+        ],
         'displayErrorDetails' => APP_ERROR, // set to false in production
         'addContentLengthHeader' => APP_HEADER, // Allow the web server to send the content-length header
         // Renderer settings

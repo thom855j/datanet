@@ -3,6 +3,15 @@
 // DIC configuration
 $container = $app->getContainer();
 
+// db
+$capsule = new Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container->get('settings')['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+$container['db'] = function ($c) use ($capsule) {
+    return $capsule;
+};
+
 // Custom 404
 $container['notFoundHandler'] = function ($c) {
     return function ($request, $response) use ($c) {
@@ -11,7 +20,6 @@ $container['notFoundHandler'] = function ($c) {
             ->withRedirect($c->router->pathFor('system.lobby'));
     };
 };
-
 
 // Auth
 $container['auth'] = function ($c) {
@@ -35,27 +43,13 @@ $container['view'] = function ($c) {
         'user' => $c->auth->user()
     ]);
 
-    $view->getEnvironment()->addGlobal('flash', $c->flash);
+    $view->getEnvironment()->addGlobal('settings', $c->get('settings'));
 
     $view->getEnvironment()->addGlobal('url', APP_SITEURL);
 
     return $view;
 };
 
-// Flash messages
-$container['flash'] = function ($c) {
-    return new Slim\Flash\Messages();
-};
-
-// CSRF
-$container['csrf'] = function ($c) {
-    $guard = new \Slim\Csrf\Guard();
-    $guard->setFailureCallable(function ($req, $res, $next) {
-        $req = $req->withAttribute("csrf_status", false);
-        return $next($req, $res);
-    });
-    return $guard;
-};
 
 // monolog
 $container['logger'] = function ($c) {
@@ -64,16 +58,6 @@ $container['logger'] = function ($c) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
-};
-
-// db
-$settings = $container->get('settings')['db'];
-$capsule = new Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($settings);
-$capsule->setAsGlobal();
-$capsule->bootEloquent();
-$container['db'] = function ($c) use ($capsule) {
-    return $capsule;
 };
 
 // validation

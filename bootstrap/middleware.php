@@ -8,5 +8,4 @@ $app->add(new App\Http\Middleware\System\PersistingInputMiddleware($container));
 
 $app->add(new App\Http\Middleware\System\InputMiddleware($container));
 
-$app->add($container->csrf);
 

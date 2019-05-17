@@ -4,7 +4,7 @@
 
     <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
 
-    <p data-ty="input">Logged in as user {{ auth.user.user_login | upper }}.</p>
+    <p data-ty="input">Logged in as user {{ auth.user.user_name | upper }}.</p>
     <p data-ty="input">Last login was {{ auth.user.user_last | date("l g:i a, F j, Y", 'Europe/Copenhagen') }}.</p>
 
     </div>

@@ -3,9 +3,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>DATANET</title>
+        <title>
+            {% if auth.checkUser %}
+            {{ auth.host.host_name }}@{{ auth.user.user_name }}
+            {% else %}
+            DATANET 
+            {% endif %}
+        </title>
         <link rel="stylesheet" type="text/css" href="{{ url }}public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="{{ url }}public/css/OS/BASIC.css">
+        {% if auth.checkHost %}
+            <link rel="stylesheet" type="text/css" href="{{ url }}public/css/OS/{{ auth.host.host_type }}.css">
+        {% else %}
+            <link rel="stylesheet" type="text/css" href="{{ url }}public/css/OS/BASIC.css">
+        {% endif %}
     </head>
     <body>
 

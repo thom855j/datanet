@@ -145,6 +145,10 @@ function rlogin(input) {
   return post_data;
 }
 
+function telnet(input) {
+  return rlogin(input);
+}
+
 function logout() {
 
   return post_data = true;
@@ -152,7 +156,7 @@ function logout() {
 }
 
 function exit() {
- return window.location.replace(document.referrer);
+ return logout();
 }
 
 function quit() {

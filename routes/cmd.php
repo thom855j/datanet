@@ -41,6 +41,10 @@ $app->group('', function() {
     $this->get('/cmd/status', 'StatusController:get')->setName('cmd.status');
     $this->post('/cmd/status', 'StatusController:post');
 
+    // RLogin
+    $this->get('/cmd/rlogin', 'RloginController:get')->setName('cmd.rlogin');
+    $this->post('/cmd/rlogin', 'RloginController:post');
+
     // Logout
     $this->get('/cmd/logout', 'LogoutController:get')->setName('cmd.logout');
     $this->post('/cmd/logout', 'LogoutController:post');

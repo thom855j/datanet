@@ -13,7 +13,7 @@ class UnknownMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
 
-        if($this->auth->check()) {
+        if($this->auth->checkUser()) {
             return $this->response->withStatus(404);
         }
 

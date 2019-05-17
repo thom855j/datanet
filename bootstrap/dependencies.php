@@ -39,8 +39,10 @@ $container['view'] = function ($c) {
     ));
 
     $view->getEnvironment()->addGlobal('auth', [
-        'check' => $c->auth->check(),
-        'user' => $c->auth->user()
+        'checkUser' => $c->auth->checkUser(),
+        'checkHost' => $c->auth->checkHost(),
+        'user' => $c->auth->user(),
+        'host' => $c->auth->host()
     ]);
 
     $view->getEnvironment()->addGlobal('settings', $c->get('settings'));

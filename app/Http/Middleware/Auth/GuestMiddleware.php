@@ -13,12 +13,23 @@ class GuestMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
 
-        if ($this->auth->check()) {
-            return $res->withRedirect(
-                $this->router->pathFor('auth.user', 
-                    ['username' => $this->auth->user()->user_login]
-                )
-            );
+        if ($this->auth->checkUser()) {
+
+            if($this->auth->checkHost()) {
+
+                return $res->withRedirect(
+                    $this->router->pathFor('auth.host', 
+                        ['hostname' => $this->auth->host()->host_name]
+                    )
+                );
+
+            } else {
+                return $res->withRedirect(
+                    $this->router->pathFor('auth.user', 
+                        ['username' => $this->auth->user()->user_name]
+                    )
+                );
+            }
 
         }
 

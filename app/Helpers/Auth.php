@@ -21,13 +21,17 @@ class Auth {
         return Host::where('ID', $_SESSION['host'])->first();
     }
 
-    public function check() {
+    public function checkUser() {
         return isset($_SESSION['user']);
     }
 
-    public function hostAttempt($username, $password) {
+    public function checkHost() {
+        return isset($_SESSION['host']);
+    }
 
-        $host = Host::where('user_name', $username)->first();
+    public function hostAttempt($hostname, $password) {
+
+        $host = Host::where('host_name', $hostname)->first();
 
         if (!$host) {
             return false;
@@ -45,7 +49,7 @@ class Auth {
 
     public function userAttempt($username, $password) {
 
-        $user = User::where('user_login', $username)->first();
+        $user = User::where('user_name', $username)->first();
 
         if (!$user) {
             return false;
@@ -61,8 +65,12 @@ class Auth {
         return false;
     }
 
-    public function logout() {
+    public function userLogout() {
         unset($_SESSION['user']);
+    }
+
+    public function hostLogout() {
+        unset($_SESSION['host']);
     }
 
 }

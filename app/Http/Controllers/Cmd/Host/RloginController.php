@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App\Http\Controllers\Cmd\Auth;
+namespace App\Http\Controllers\Cmd\Host;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hosts\Host;
@@ -29,7 +29,7 @@ class RloginController extends Controller {
     public function post($req, $res, $args) {
 
         if( count($_SESSION['input']) < 2) {
-            echo json_encode(['feedback'=> 'Missing parameters. Use <b>LOGIN</b> < hostname > < password >.']);
+            echo json_encode(['feedback'=> 'Missing parameters. Use <b>RLOGIN</b> < hostname > < password >.']);
             return false;
         }
 
@@ -42,7 +42,7 @@ class RloginController extends Controller {
 
         } else {
             echo json_encode(
-                ['feedback'=> 'Identification not recognized by system or user banned. Please try again.']
+                ['feedback'=> 'Identification not recognized by remote system or user banned. Please try again.']
             );
             return false;
         }

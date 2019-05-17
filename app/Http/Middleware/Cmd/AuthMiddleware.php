@@ -13,11 +13,9 @@ class AuthMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
 
-        if(!$this->auth->check()) {
+        if(!$this->auth->checkUser()) {
             return $this->response->withStatus(404);
         }
-
-        $this->auth->user()->update(['user_cmd' => 'hello' ]);
 
         return $next($req, $res);
     }

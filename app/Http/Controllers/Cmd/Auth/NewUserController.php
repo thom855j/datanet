@@ -49,7 +49,7 @@ class NewUserController extends Controller {
 
 
             $user = User::create([
-                'user_login' => $req->getParam('username'),
+                'user_name' => $req->getParam('username'),
                 'user_active' => 1,
                 'user_ip' => getUserLocation()
             ]);
@@ -97,7 +97,7 @@ class NewUserController extends Controller {
 
 
             $user = User::create([
-                'user_login' => $req->getParam('username'),
+                'user_name' => $req->getParam('username'),
                 'user_email' => $req->getParam('email'),
                 'user_active' => 1,
                 'user_ip' => getIP()

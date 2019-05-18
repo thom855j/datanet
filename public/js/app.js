@@ -25,7 +25,7 @@ $(document).ready(function(){
 
                 var post_data = data;
 
-                var cmd_url = input.split(" ")[0];
+                var cmd_url = cmdDubs(input);
 
                 $.ajax({
                     type: "POST",

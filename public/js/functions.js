@@ -74,3 +74,17 @@ function removeDupsFromArray(a) {
         r.push(k);
     return r;
 }
+
+
+function cmdDubs(input) {
+
+    if(input == 'logout') {
+        return 'logout';
+    } else if(input == 'telnet') {
+        return 'rlogin';
+    } else if(input == 'exit') {
+        return 'logout';
+    }
+
+    return input.split(" ")[0];
+}

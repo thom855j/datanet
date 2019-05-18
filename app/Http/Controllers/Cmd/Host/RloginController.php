@@ -14,7 +14,7 @@ use Respect\Validation\Validator as v;
 
 class RloginController extends Controller {
 
-    private function redirectUrl($username) {
+    private function redirectUrl($hostname) {
 
          echo json_encode([
             'redirect' => 1, 
@@ -33,12 +33,11 @@ class RloginController extends Controller {
             return false;
         }
 
-        $user = $this->auth->hostAttempt($req->getParam('hostname'), $req->getParam('password'));
+        $host = $this->auth->hostAttempt($req->getParam('hostname'), $req->getParam('password'));
 
-        if($user && $this->auth->host()->host_active == 1) {
+        if($host) {
 
-            //$this->auth->user()->update(['user_ip' => getUserLocation()]);
-            return $this->redirectUrl($req->getParam('username'));
+            return $this->redirectUrl($req->getParam('hostname'));
 
         } else {
             echo json_encode(

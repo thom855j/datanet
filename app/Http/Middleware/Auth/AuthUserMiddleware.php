@@ -9,9 +9,15 @@
 namespace App\Http\Middleware\Auth;
 use App\Http\Middleware\Middleware;
 
-class GuestMiddleware extends Middleware {
+class AuthUserMiddleware extends Middleware {
 
     public function __invoke($req, $res, $next) {
+
+
+        if(!$this->auth->checkUser()) {
+
+            return $res->withRedirect($this->router->pathFor('system.lobby'));
+        }
 
         if($this->auth->checkHost()) {
 
@@ -20,15 +26,6 @@ class GuestMiddleware extends Middleware {
                     ['hostname' => $this->auth->host()->host_name]
                 )
             );
-
-        } elseif ($this->auth->checkUser()) {
-
-            return $res->withRedirect(
-                $this->router->pathFor('auth.user', 
-                    ['username' => $this->auth->user()->user_name]
-                )
-            );
-
         }
 
         return $next($req, $res);

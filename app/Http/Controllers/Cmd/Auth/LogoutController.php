@@ -14,29 +14,30 @@ use Respect\Validation\Validator as v;
 
 class LogoutController extends Controller {
 
-    private function redirectUrl($url) {
+    private function redirectUrl($url, $auth) {
 
         echo json_encode([
             'redirect' => 1, 
             'feedback' => 'Session closed.',
-            'redirect_url' => $this->router->pathFor($url)
+            'redirect_url' => $this->router->pathFor($url, $auth)
         ]);
     }
 
     public function get($req, $res, $args) {
 
-        return $this->post($req, $res, $args);
+        echo 'Nope';
     }
 
     public function post($req, $res, $args) {
 
-        if($this->auth) {
+        if($this->auth->checkUser()) {
 
             if($this->auth->checkHost()) {
 
-                $this->auth->user()->touch();
                 $this->auth->hostLogout();
-                return $this->redirectUrl('auth.user');
+                return $this->redirectUrl('auth.user', 
+                    ['username' => $this->auth->user()->user_name]
+                );
 
             } else {
 

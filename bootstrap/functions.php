@@ -1,5 +1,13 @@
 <?php
 
+function encrypt($str) {
+    return base64_encode($str);
+}
+
+function decrypt($str) {
+    return base64_decode($str);
+}
+
 function scan($dir) {
     return array_values(array_diff(scandir($dir), array('..', '.')));
 }

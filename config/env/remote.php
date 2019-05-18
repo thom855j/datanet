@@ -11,6 +11,8 @@ define('APP_CACHE', $webroot_dir . 'storage/cache/');
 // Datetime
 define('TIMEZONE', 'Europe/Copenhagen');
 
+if($_SERVER['HTTP_HOST'] == decrypt('bmV0LmRhdGFsYWVyZS5kaw==') ) {
+
 /**
  * URLs
  */
@@ -23,8 +25,10 @@ define('APP_SITEURL', 'https://net.datalaere.dk');
 define('DB_DRIVER', 'mysql');
 define('DB_NAME', 'datalaere_dk_data');
 define('DB_USER', 'datalaere_dk');
-define('DB_PASSWORD', 'cDk1cnRoMno=');
-define('DB_HOST', 'bXlzcWwxNy51bm9ldXJvLmNvbQ==');
+define('DB_PASSWORD', decrypt('cDk1cnRoMno=') );
+define('DB_HOST', decrypt('bXlzcWwxNy51bm9ldXJvLmNvbQ==') );
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', 'utf8_unicode_ci');
 define('DB_PREFIX', '');
+
+}

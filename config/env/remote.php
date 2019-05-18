@@ -23,7 +23,7 @@ define('APP_SITEURL', 'https://net.datalaere.dk');
  * DB settings
  */
 define('DB_DRIVER', 'mysql');
-define('DB_NAME', 'datalaere_dk_data');
+define('DB_NAME', 'datalaere_dk_db_data');
 define('DB_USER', 'datalaere_dk');
 define('DB_PASSWORD', decrypt('cDk1cnRoMno=') );
 define('DB_HOST', decrypt('bXlzcWwxNy51bm9ldXJvLmNvbQ==') );

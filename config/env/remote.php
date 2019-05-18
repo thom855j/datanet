@@ -16,8 +16,8 @@ if($_SERVER['HTTP_HOST'] == decrypt('bmV0LmRhdGFsYWVyZS5kaw==') ) {
 /**
  * URLs
  */
-define('APP_HOME', 'https://net.datalaere.dk');
-define('APP_SITEURL', 'https://net.datalaere.dk');
+define('APP_HOME', 'https://net.datalaere.dk/');
+define('APP_SITEURL', 'https://net.datalaere.dk/');
 
 /**
  * DB settings

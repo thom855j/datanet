@@ -1,0 +1,19 @@
+/* SOVIET CSS */
+
+/*
+* Setup
+*/
+body, input, a {
+  background: #222222;
+  color:  #CD0000;
+  text-shadow: #CD0000 0 -1px 35px;
+}
+
+
+/*
+ *  Scrollbar style
+ */
+body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner, body::-webkit-scrollbar
+{
+    background-color: #222222;
+}

@@ -1,3 +1,31 @@
+function cmd(input) {
+
+  var client = input;
+
+  if( input.indexOf(' ') >= 0 ) {
+    var cmd = input.split(" ");
+
+    cmd = cmd[0].toString().toLowerCase();
+
+    if (eval("typeof " + cmd) === "function"){
+     setCookie('cmd', cmd, 1);
+     return eval(cmd + "('" + client + "');");
+    }
+
+    return true;
+
+  } else if(typeof window[client] !== "undefined" && window[client].length == 0) {
+
+    setCookie('cmd', client, 1);
+    return eval(client + "();");
+
+  } else {
+
+    return true;
+  }
+
+}
+
 function getUrl()
 {
     //return document.URL.substr(0,document.URL.lastIndexOf('/'))

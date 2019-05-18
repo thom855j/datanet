@@ -1,0 +1,20 @@
+<script type="text/javascript">
+$(document).ready(function(){
+
+    function loadWall(){     
+        $.ajax({
+            type: "GET",
+            url: url + "host/{{ auth.host.host_name }}/wall",
+            cache: false,
+            success: function(data){     
+                    
+                $("#terminal").html(data); 
+                    
+            }               
+        });
+    }
+
+    setInterval(loadWall, 5000);
+
+}); 
+</script>

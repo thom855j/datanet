@@ -1,0 +1,48 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+    <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
+
+    <p data-ty="input">Trying...</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Connected to {{ auth.host.host_name|upper }}</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Current time is {{ "now"|date("g:i", 'Europe/Copenhagen') }}.</p>
+
+    <br data-ty>
+
+    <p data-ty="input">GREETINGS PROFESSOR FALKEN.</p>
+    <br data-ty>
+    <p data-ty="input">Hello.</p>
+    <br data-ty>
+    <p data-ty="input">HOW ARE YOU FEELING TODAY?</p>
+    <br data-ty>
+    <p data-ty="input">I'm fine. How are you?</p>
+    <br data-ty>
+    <p data-ty="input">EXCELLENT. IT'S BEEN A LONG TIME. CAN YOU EXPLAIN THE REMOVAL OF YOUR USER ACCOUNT ON JUNE 23RD, 1973?</p>
+    <br data-ty>
+    <p data-ty="input">People sometimes make mistakes</p>
+    <br data-ty>
+    <p data-ty="input">YES THEY DO. SHALL WE PLAY A GAME?</p>
+    <br data-ty>
+    <p data-ty="input">Love to. How about Global Thermonuclear War?</p>
+    <br data-ty>
+    <p data-ty="input">WOULDN'T YOU PREFER A GOOD GAME OF CHESS?</p>
+    <br data-ty>
+    <p data-ty="input">Later. Right now let's play Global Thermonuclear War.</p>
+    <br data-ty>
+    <p data-ty="input">FINE.</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Type <b>HELP</b> for detailed command list.</p>
+    </div>
+
+    {% include "templates/partials/host/input.twig" %}
+    
+{% endblock %}

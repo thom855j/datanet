@@ -40,6 +40,10 @@ $container['LogoutController'] = function ($c) {
     return new App\Http\Controllers\Cmd\Auth\LogoutController($c);
 };
 
+$container['HostnameController'] = function ($c) {
+    return new App\Http\Controllers\Cmd\Host\HostnameController($c);
+};
+
 
 // Auth
 $container['StatusController'] = function ($c) {
@@ -61,6 +65,7 @@ $container['FingerController'] = function ($c) {
 $container['HostsController'] = function ($c) {
     return new App\Http\Controllers\Cmd\Host\HostsController($c);
 };
+
 
 
 // Host

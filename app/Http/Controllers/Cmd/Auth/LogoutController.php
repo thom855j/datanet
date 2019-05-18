@@ -43,7 +43,7 @@ class LogoutController extends Controller {
 
                 $this->auth->user()->touch();
                 $this->auth->userLogout();
-                return $this->redirectUrl('system.lobby');
+                return $this->redirectUrl('system.lobby', []);
             }
 
         }

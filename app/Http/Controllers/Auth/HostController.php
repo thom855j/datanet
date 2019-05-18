@@ -15,7 +15,20 @@ class HostController extends Controller {
     public function getIndex($req, $res, $args) {
 
         $os = $this->auth->host()->host_type;
-        return $this->view->render($res, "auth/host/{$os}.twig");
+
+        if(file_exists(APP_VIEWS . "auth/host/{$os}.twig")) {
+            return $this->view->render($res, "auth/host/{$os}.twig");
+        } else {
+            return $this->view->render($res, "auth/host/BASIC.twig");
+        }
+
     }
+
+    public function getWall($req, $res, $args) {
+       $wall = $this->auth->host()->host_content;
+       echo $wall;
+    }
+
+
 
 }

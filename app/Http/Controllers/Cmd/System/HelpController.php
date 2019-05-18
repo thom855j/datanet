@@ -21,7 +21,7 @@ class HelpController extends Controller {
 
         if( count($_SESSION['input']) === 1) {
 
-            if($this->auth->check()) {
+            if($this->auth->checkUser()) {
                 $data = Command::getCommands(true);
                 $more = '<br> More commands become available after login to host.';
                 

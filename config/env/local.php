@@ -14,8 +14,8 @@ define('TIMEZONE', 'Europe/Copenhagen');
 /**
  * URLs
  */
-define('APP_HOME', 'http://localhost/GitHub/datalaere/datanet/index.php/');
-define('APP_SITEURL', 'http://localhost/GitHub/datalaere/datanet/');
+define('APP_HOME', 'http://localhost/github/datalaere/datanet/');
+define('APP_SITEURL', 'http://localhost/github/datalaere/datanet/');
 
 
 /**

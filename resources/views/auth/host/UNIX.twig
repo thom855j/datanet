@@ -8,7 +8,7 @@
 
     <br data-ty>
 
-    <p data-ty="input">Connected to {{ auth.host.host_name }}</p>
+    <p data-ty="input">Connected to {{ auth.host.host_name|upper }}</p>
 
     <br data-ty>
 
@@ -24,8 +24,6 @@
     <p data-ty="input">Type <b>HELP</b> for detailed command list.</p>
     </div>
 
-    <form>
-    <span>{{ auth.host.host_name }}@<input type="text" name="cmd" id="input" autocomplete="off"/></span>
-    </form>
+    {% include "templates/partials/host/input.twig" %}
     
 {% endblock %}

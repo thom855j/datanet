@@ -8,8 +8,6 @@
     <p data-ty="input">Last login was {{ auth.user.user_last | date("l g:i a, F j, Y", 'Europe/Copenhagen') }}.</p>
 
     </div>
-    <form>
-    <span>@<input type="text" name="cmd" id="input" autocomplete="off"/></span>
-    </form>
+    {% include "templates/partials/user/input.twig" %}
 
 {% endblock %}

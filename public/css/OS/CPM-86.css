@@ -1,0 +1,19 @@
+/* CPM-86 CSS */
+
+/*
+* Setup
+*/
+body, input, a {
+  background: #441B02;
+  color:  #DEA02C;
+  text-shadow: #DEA02C 0 -1px 35px;
+}
+
+
+/*
+ *  Scrollbar style
+ */
+body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner, body::-webkit-scrollbar
+{
+    background-color: #441B02;
+}

@@ -16,19 +16,18 @@
         {% else %}
             <link rel="stylesheet" type="text/css" href="{{ url }}public/css/OS/BASIC.css">
         {% endif %}
+        <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script>!window.jQuery && document.write('<script src="{{ url }}public/jQuery/3.4.1.min.js"><\/script>');</script>
+        <script type="text/javascript">
+        var url = "{{ settings.url.local }}";
+        var DEBUG = "{{ settings.displayErrorDetails }}";
+        </script>
     </head>
     <body>
 
     <div class="container">
         {% block content %}{% endblock %}
     </div>
-    
-    <script type="text/javascript">
-    var url = "{{ settings.url.local }}";
-    var DEBUG = "{{ settings.displayErrorDetails }}";
-    </script>
-    <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script>!window.jQuery && document.write('<script src="{{ url }}public/jQuery/3.4.1.min.js"><\/script>');</script>
     <script src="{{ url }}public/js/jQuery/termynal.min.js" data-termynal-container="#terminal"></script>
     <script src="{{ url }}public/js/functions.js"></script>
     <script src="{{ url }}public/js/cmd.js"></script>

@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Cmd\Host;
 use App\Http\Controllers\Controller;
 use App\Models\Hosts\Host;
 
-class HostsController extends Controller {
+class HostnameController extends Controller {
 
     public function get($req, $res, $args) {
         
@@ -20,10 +20,12 @@ class HostsController extends Controller {
         public function post($req, $res, $args) {
 
         if( count($_SESSION['input']) === 1) {
-            $data = Host::get()
-            ->toArray();
-
-            echo json_encode(['feedback'=> htmlTable($data)]);
+            
+            if ($this->auth->checkHost()) {
+                $hostname = $this->auth->host()->host_name;
+                $os = $this->auth->host()->host_type;
+                echo json_encode(['feedback'=> "{$hostname} ($os)"]);
+            }
           
         }
 

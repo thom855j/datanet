@@ -1,0 +1,29 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+    <div id="terminal" data-termynal data-ty-typeDelay="1" data-ty-lineDelay="1">
+
+    <p data-ty="input">Попытка...</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Соединен с {{ auth.host.host_name|upper }}</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Текущее время {{ "now"|date("g:i", 'Europe/Copenhagen') }}.</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Советский персональный компьютер</p>
+    <p data-ty="input">Версия 1.0 (C) Copyright Советский Союз 1989</p>
+
+    <br data-ty>
+
+    <p data-ty="input">Введите <b>HELP</b> для получения подробного списка команд.</p>
+    </div>
+
+    {% include "templates/partials/host/input.twig" %}
+    
+{% endblock %}

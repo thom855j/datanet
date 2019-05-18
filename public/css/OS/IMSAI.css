@@ -1,0 +1,19 @@
+/* IMSAI CSS */
+
+/*
+* Setup
+*/
+body, input, a {
+  background: #162938;
+  color:  #74B6F6;
+  text-shadow: #74B6F6 0 -1px 35px;
+}
+
+
+/*
+ *  Scrollbar style
+ */
+body::-webkit-scrollbar-track, body::-webkit-scrollbar-corner, body::-webkit-scrollbar
+{
+    background-color: #162938;
+}

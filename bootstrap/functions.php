@@ -1,5 +1,9 @@
 <?php
 
+function scan($dir) {
+    return array_values(array_diff(scandir($dir), array('..', '.')));
+}
+
 function isLocalhost() {
 
     $whitelist = array(

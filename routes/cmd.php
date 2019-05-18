@@ -33,6 +33,9 @@ $app->group('', function() {
     $this->get('/cmd/hosts', 'HostsController:get')->setName('cmd.hosts');
     $this->post('/cmd/hosts', 'HostsController:post');
 
+    $this->get('/cmd/hostname', 'HostnameController:get')->setName('cmd.hostname');
+    $this->post('/cmd/hostname', 'HostnameController:post');
+
     // Newhost
     $this->get('/cmd/newhost', 'NewHostController:get')->setName('cmd.newhost');
     $this->post('/cmd/newhost', 'NewHostController:post');

@@ -71,7 +71,7 @@ class NewHostController extends Controller {
 
         if( count($_SESSION['input']) < 2) {
 
-            echo json_encode(['feedback'=> 'Missing parameters. Use <b>NEWHOST</b> < hostname > < password > [os].']);
+            echo json_encode(['feedback'=> 'Missing parameters. Use <b>NEWHOST</b> < hostname > < password > [os = IBM-DOS, UNIX, CPM-86, COM-65].']);
             return false;
         }
 

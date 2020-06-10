@@ -14,11 +14,19 @@ use App\Models\Hosts\Host;
 class Auth {
 
     public function user() {
-        return User::find($_SESSION['user']);
+        if(isset($_SESSION['user'])) {
+            return User::find($_SESSION['user']);
+        }
+
+        return false;
     }
 
      public function host() {
-        return Host::where('ID', $_SESSION['host'])->first();
+        if(isset($_SESSION['host'])) {
+            return Host::where('ID', $_SESSION['host'])->first();
+        }
+
+        return false;
     }
 
     public function checkUser() {

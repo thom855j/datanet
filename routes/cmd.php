@@ -17,8 +17,8 @@ $app->post('/cmd/users', 'UsersController:post');
 
 $app->group('', function() {
     // Newuser
-    $this->get('/cmd/newuser', 'NewUserController:get')->setName('cmd.newuser');
-    $this->post('/cmd/newuser', 'NewUserController:post');
+   $this->get('/newuser', 'NewUserController:get')->setName('cmd.newuser');
+   $this->post('/cmd/newuser', 'NewUserController:post');
 
     // Login
     $this->get('/cmd/login', 'LoginController:get')->setName('cmd.login');

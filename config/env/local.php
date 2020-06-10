@@ -14,8 +14,8 @@ define('TIMEZONE', 'Europe/Copenhagen');
 /**
  * URLs
  */
-define('APP_HOME', 'http://localhost/github/datalaere/datanet/');
-define('APP_SITEURL', 'http://localhost/github/datalaere/datanet/');
+define('APP_HOME', 'http://localhost/github/datanet/');
+define('APP_SITEURL', 'http://localhost/github/datanet/');
 
 
 /**
@@ -24,7 +24,7 @@ define('APP_SITEURL', 'http://localhost/github/datalaere/datanet/');
 define('DB_DRIVER', 'mysql');
 define('DB_NAME', 'datanet');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'mysql');
+define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', 'utf8_unicode_ci');

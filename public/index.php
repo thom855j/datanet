@@ -4,7 +4,7 @@ session_start();
 
 /** @var string Directory containing all of the site's files */
 /** @var string Document Root */
-$webroot_dir = dirname(__FILE__) . '/';
+$webroot_dir = dirname(__DIR__) . '/';
 
 define('WEBROOT_DIR', $webroot_dir);
 

@@ -24,11 +24,11 @@ $(document).ready(function(){
 
             cmdHistory(localHistory(), 'input');
 
-            var data = cmd(input);
+            //var data = cmd(input);
 
-            if( data ) {
+            if( input ) {
 
-                var post_data = data;
+              //  var post_data = data;
 
                 var cmd_url = cmdDubs(input);
 
@@ -36,7 +36,7 @@ $(document).ready(function(){
                     type: "POST",
                     url: getUrl() + "cmd/" + cmd_url,
                     cache: false,
-                    data: post_data,
+                    data: input,
                     success: function(data){  
 
                         if(DEBUG) {
@@ -56,7 +56,7 @@ $(document).ready(function(){
                             }, 1000);
                      
                         } else {
-                            $("#terminal").append(response.feedback, "<br>"); //Insert chat log into the #terminal div  
+                            $("#terminal").append(response.feedback, "<br>"); 
                         }   
                                       
                     },

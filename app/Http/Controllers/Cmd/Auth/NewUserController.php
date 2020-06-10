@@ -113,7 +113,7 @@ class NewUserController extends Controller {
 
     public function get($req, $res, $args) {
 
-       return $this->post($req, $res, $args);
+        return $this->view->render($res, 'guest/newuser.twig');
 
     }
 
